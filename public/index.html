@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TestWebApp</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    .status {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hello World!</h1>
+    <p>TestWebApp dziala poprawnie.</p>
+    <div class="status" id="status">Laczenie z API...</div>
+  </div>
+  <script>
+    fetch('/api/hello')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('status').textContent =
+          `API: ${data.message} | ${data.timestamp}`;
+      })
+      .catch(() => {
+        document.getElementById('status').textContent = 'Strona statyczna - API niedostepne';
+      });
+  </script>
+</body>
+</html>
