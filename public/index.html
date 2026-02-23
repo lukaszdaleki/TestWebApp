@@ -3,55 +3,1036 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TestWebApp</title>
+  <title>Różaniec Pierwszy – Województwo Lubelskie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green-dark: #1a5632;
+      --green: #2d8a4e;
+      --green-light: #4caf50;
+      --gold: #c8a951;
+      --gold-light: #f5e6b8;
+      --bg: #fafaf5;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --white: #ffffff;
+      --section-gap: 5rem;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a5632 0%, #2d8a4e 40%, #4caf50 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,160L48,149.3C96,139,192,117,288,133.3C384,149,480,203,576,218.7C672,235,768,213,864,186.7C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>') no-repeat bottom;
+      background-size: cover;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--gold-light);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-stats {
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
-    .container {
+
+    .hero-stat {
       text-align: center;
-      padding: 2rem;
+      color: var(--white);
     }
-    h1 {
-      font-size: 3rem;
+
+    .hero-stat .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .hero-stat .label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ===== SECTIONS ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT ===== */
+    #historia { background: var(--white); }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .history-text p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--green), var(--gold));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      background: var(--green);
+      border: 3px solid var(--gold-light);
+      border-radius: 50%;
+    }
+
+    .timeline-year {
+      font-weight: 600;
+      color: var(--green);
+      font-size: 0.9rem;
+    }
+
+    .timeline-text {
+      font-size: 0.92rem;
+      color: var(--text-light);
+    }
+
+    /* ===== MAP ===== */
+    #lokalizacja { background: var(--bg); }
+
+    .map-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .map-info-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .map-info-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--green-dark);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .map-embed {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      height: 100%;
+      min-height: 420px;
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: none;
+    }
+
+    /* ===== SCHOOL ===== */
+    #szkola { background: var(--white); }
+
+    .school-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .school-img {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .school-img img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .school-text h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--green-dark);
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    .status {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background: rgba(255,255,255,0.15);
+
+    .school-text p { margin-bottom: 1rem; }
+
+    .school-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold-light);
+      color: var(--green-dark);
+      padding: 0.5rem 1rem;
       border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== KIERUNKI ===== */
+    #kierunki { background: var(--bg); }
+
+    .kierunki-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .kierunek-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .kierunek-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .kierunek-icon {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+    }
+
+    .kierunek-body {
+      padding: 1.5rem;
+    }
+
+    .kierunek-type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .kierunek-body h3 {
+      font-size: 1.05rem;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .kierunek-body p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    /* ===== EVENTS ===== */
+    #wydarzenia { background: var(--white); }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--green);
+      transition: transform 0.2s;
+    }
+
+    .event-card:hover { transform: translateX(4px); }
+
+    .event-date {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .event-card h3 {
+      font-size: 1.05rem;
+      margin: 0.3rem 0 0.5rem;
+      color: var(--green-dark);
+    }
+
+    .event-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    .event-tag {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== GALLERY ===== */
+    #galeria { background: var(--bg); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item.tall { grid-row: span 2; }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 1rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ===== CONTACT / FOOTER ===== */
+    .footer {
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.8);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .footer p, .footer a {
       font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .footer a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem;
+      opacity: 0.6;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .history-grid,
+      .map-wrapper,
+      .school-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item.tall {
+        grid-row: span 1;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      nav ul {
+        gap: 0.25rem;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hello World!</h1>
-    <p>TestWebApp dziala poprawnie.</p>
-    <div class="status" id="status">Laczenie z API...</div>
-  </div>
-  <script>
-    fetch('/api/hello')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('status').textContent =
-          `API: ${data.message} | ${data.timestamp}`;
-      })
-      .catch(() => {
-        document.getElementById('status').textContent = 'Strona statyczna - API niedostepne';
-      });
-  </script>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-badge">Województwo Lubelskie &bull; Powiat Biłgorajski</div>
+      <h1>Różaniec Pierwszy</h1>
+      <p>Historyczna wieś na Płaskowyżu Tarnogrodzkim z ponad 475-letnią tradycją oraz renomowaną szkołą rolniczą im. Wincentego Witosa.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="number">1550</div>
+          <div class="label">Rok założenia</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">874</div>
+          <div class="label">Mieszkańców</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">2216</div>
+          <div class="label">Hektarów</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">67+</div>
+          <div class="label">Lat szkoły</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#lokalizacja">Lokalizacja</a></li>
+      <li><a href="#szkola">Szkoła Rolnicza</a></li>
+      <li><a href="#kierunki">Kierunki</a></li>
+      <li><a href="#wydarzenia">Wydarzenia</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+    </ul>
+  </nav>
+
+  <!-- HISTORIA -->
+  <section id="historia">
+    <div class="container">
+      <div class="section-header">
+        <h2>Historia Różańca</h2>
+        <div class="divider"></div>
+        <p>Wieś o bogatej historii sięgającej XVI wieku, która przetrwała najazdy tatarskie, zabory i tragedię II wojny światowej.</p>
+      </div>
+      <div class="history-grid">
+        <div class="history-text">
+          <p>Różaniec Pierwszy to część wsi Różaniec, położonej w województwie lubelskim, w powiecie biłgorajskim, w gminie Tarnogród. Wieś leży na malowniczym Płaskowyżu Tarnogrodzkim, nad rzeką Pasternik.</p>
+          <p>Wieś została założona w 1550 roku aktem erekcyjnym króla Zygmunta II Augusta, który nadał przywilej osadniczy Janowi Dymirowi Kuźmie z prawem karczowania puszczy nad rzeką Lubienią. Co ciekawe, Różaniec ma starszą metrykę niż Tarnogród, Biłgoraj i Zamość.</p>
+          <p>W 1588 roku Różaniec wraz z całym starostwem zamechskim znalazł się w posiadaniu kanclerza Jana Zamoyskiego, który rok później włączył wieś do Ordynacji Zamojskiej. W 1591 roku po raz pierwszy wzmiankowana jest cerkiew Narodzenia Matki Bożej.</p>
+          <p>W latach 1937-38 wybudowano dwie szkoły, co dało początek podziałowi na Różaniec Pierwszy i Różaniec Drugi. W roku szkolnym 1957/58 na terenie dawnego folwarku utworzono Szkołę Hodowlaną, z której wyrosła dzisiejsza szkoła rolnicza.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1550</div>
+            <div class="timeline-text">Założenie wsi przywilejem króla Zygmunta II Augusta.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1588</div>
+            <div class="timeline-text">Włączenie do posiadłości kanclerza Jana Zamoyskiego i Ordynacji Zamojskiej.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1624</div>
+            <div class="timeline-text">Wieś spalona i zniszczona podczas najazdu tatarskiego. Ok. 500 osób zabitych lub uprowadzonych.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1928</div>
+            <div class="timeline-text">Powstanie Straży Pożarnej, KGW, Kółka Rolniczego i pierwszej w powiecie Spółdzielni Mleczarskiej.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">18 III 1943</div>
+            <div class="timeline-text">Pacyfikacja wsi przez Wehrmacht i SS. Zamordowano ok. 200 mieszkańców, wieś spalono.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1957</div>
+            <div class="timeline-text">Powstanie Szkoły Hodowlanej na terenie dawnego folwarku — początek szkoły rolniczej.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1975</div>
+            <div class="timeline-text">Erygowanie parafii pw. św. Antoniego Padewskiego w Różańcu.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2009</div>
+            <div class="timeline-text">Szkoła przejmuje nazwę Zespół Szkół Centrum Kształcenia Rolniczego im. W. Witosa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKALIZACJA -->
+  <section id="lokalizacja">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lokalizacja</h2>
+        <div class="divider"></div>
+        <p>Różaniec Pierwszy leży w południowej części województwa lubelskiego, w malowniczej okolicy Płaskowyżu Tarnogrodzkiego.</p>
+      </div>
+      <div class="map-wrapper">
+        <div class="map-info-card">
+          <h3>Dane geograficzne</h3>
+          <div class="info-row">
+            <div class="info-icon">&#127470;&#127473;</div>
+            <div>
+              <div class="info-label">Województwo</div>
+              <div class="info-value">Lubelskie</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#127963;</div>
+            <div>
+              <div class="info-label">Powiat</div>
+              <div class="info-value">Biłgorajski</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#127969;</div>
+            <div>
+              <div class="info-label">Gmina</div>
+              <div class="info-value">Tarnogród</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#128205;</div>
+            <div>
+              <div class="info-label">Region fizycznogeograficzny</div>
+              <div class="info-value">Płaskowyż Tarnogrodzki</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#128167;</div>
+            <div>
+              <div class="info-label">Rzeka</div>
+              <div class="info-value">Pasternik (dorzecze Tanwi)</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#128231;</div>
+            <div>
+              <div class="info-label">Kod pocztowy</div>
+              <div class="info-value">23-420 Tarnogród</div>
+            </div>
+          </div>
+          <h3 style="margin-top: 1.5rem;">Okoliczne atrakcje</h3>
+          <div class="info-row">
+            <div class="info-icon">&#9962;</div>
+            <div>
+              <div class="info-value">Rynek w Tarnogrodzie (160x140 m)</div>
+              <div class="info-label">Jeden z największych rynków w Polsce</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#127795;</div>
+            <div>
+              <div class="info-value">Puszcza Solska i Roztocze</div>
+              <div class="info-label">Unikalne tereny przyrodnicze</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">&#127754;</div>
+            <div>
+              <div class="info-value">Zalew Biszcza-Żary</div>
+              <div class="info-label">Zbiornik rekreacyjny z 2008 roku</div>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=22.82%2C50.30%2C23.02%2C50.40&layer=mapnik&marker=50.3502%2C22.9213"
+            loading="lazy"
+            title="Mapa Różańca Pierwszego"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SZKOŁA ROLNICZA -->
+  <section id="szkola">
+    <div class="container">
+      <div class="section-header">
+        <h2>Szkoła Rolnicza im. Wincentego Witosa</h2>
+        <div class="divider"></div>
+        <p>Zespół Szkół Centrum Kształcenia Rolniczego — jedyna placówka kształcąca w profilu rolniczym w powiecie biłgorajskim.</p>
+      </div>
+      <div class="school-intro">
+        <div class="school-img">
+          <img
+            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop"
+            alt="Budynek szkoły - zdjęcie przykładowe"
+            loading="lazy"
+          >
+        </div>
+        <div class="school-text">
+          <h3>Tradycja i nowoczesność</h3>
+          <p>Zespół Szkół Centrum Kształcenia Rolniczego im. Wincentego Witosa w Różańcu to szkoła z ponad 67-letnią historią. Jej początki sięgają roku szkolnego 1957/58, kiedy na terenie dawnego majątku folwarcznego utworzono jednoroczną Szkołę Hodowlaną.</p>
+          <p>W 1969 roku oddano do użytku nowoczesny budynek z 18 klasopracowniami, salą gimnastyczną, internatem na 420 miejsc oraz warsztatami szkolnymi. W 1988 roku szkoła otrzymała imię Wincentego Witosa.</p>
+          <p>Od 2007 roku organem prowadzącym placówkę jest Minister Rolnictwa i Rozwoju Wsi. Szkoła prowadzi własne gospodarstwo rolne o powierzchni 27 ha i posiada nowoczesny park maszynowy.</p>
+          <div class="school-badge">&#127942; Akredytacja Erasmus+ — praktyki zagraniczne</div>
+        </div>
+      </div>
+      <div class="school-intro" style="direction: rtl;">
+        <div class="school-img" style="direction: ltr;">
+          <img
+            src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop"
+            alt="Pole uprawne - zdjęcie przykładowe gospodarstwa szkolnego"
+            loading="lazy"
+          >
+        </div>
+        <div class="school-text" style="direction: ltr;">
+          <h3>Co wyróżnia szkołę?</h3>
+          <p>Szkoła oferuje szereg dodatkowych udogodnień i możliwości, które czynią ją wyjątkową w regionie:</p>
+          <ul style="padding-left: 1.2rem; margin: 0.5rem 0;">
+            <li>Bezpłatne kursy prawa jazdy kategorii B i T</li>
+            <li>Kurs obsługi kombajnu zbożowego z 2 placami manewrowymi</li>
+            <li>Zagraniczne praktyki w ramach programu ERASMUS+</li>
+            <li>Kursy kwalifikacyjne z certyfikatem europejskim</li>
+            <li>Własna flota autobusowa — bezpłatny dowóz uczniów</li>
+            <li>Internat z pełnym wyżywieniem</li>
+            <li>Nauka rolnictwa precyzyjnego</li>
+            <li>Bezpłatne podręczniki dla klas pierwszych</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KIERUNKI KSZTAŁCENIA -->
+  <section id="kierunki">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kierunki kształcenia</h2>
+        <div class="divider"></div>
+        <p>Szkoła oferuje kształcenie w technikum i branżowej szkole I stopnia w wielu atrakcyjnych zawodach.</p>
+      </div>
+      <div class="kierunki-grid">
+        <!-- Technikum -->
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#128268;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Technikum</div>
+            <h3>Technik mechanizacji rolnictwa i agrotroniki</h3>
+            <p>Obsługa, naprawa i diagnostyka nowoczesnych maszyn rolniczych oraz systemów elektronicznych stosowanych w rolnictwie precyzyjnym.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#127869;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Technikum</div>
+            <h3>Technik żywienia i usług gastronomicznych</h3>
+            <p>Planowanie menu, przygotowywanie potraw, organizacja usług gastronomicznych i zarządzanie kuchnią profesjonalną.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#127806;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Technikum</div>
+            <h3>Technik rolnik</h3>
+            <p>Prowadzenie produkcji roślinnej i zwierzęcej, zarządzanie gospodarstwem rolnym i stosowanie nowoczesnych technologii upraw.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#9889;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Technikum</div>
+            <h3>Technik urządzeń i systemów energetyki odnawialnej</h3>
+            <p>Montaż, eksploatacja i konserwacja instalacji fotowoltaicznych, pomp ciepła i kolektorów słonecznych.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#128021;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Technikum</div>
+            <h3>Technik weterynarii</h3>
+            <p>Profilaktyka zdrowotna zwierząt, asystowanie przy zabiegach weterynaryjnych i prowadzenie dokumentacji leczenia.</p>
+          </div>
+        </div>
+        <!-- Branżowa -->
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#129379;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Branżowa Szkoła I Stopnia</div>
+            <h3>Kucharz</h3>
+            <p>Sporządzanie potraw i napojów, stosowanie technik kulinarnych i obsługa profesjonalnego sprzętu gastronomicznego.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#127803;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Branżowa Szkoła I Stopnia</div>
+            <h3>Ogrodnik</h3>
+            <p>Planowanie i zakładanie terenów zieleni, uprawa roślin ozdobnych i warzyw oraz pielęgnacja ogrodów.</p>
+          </div>
+        </div>
+        <div class="kierunek-card">
+          <div class="kierunek-icon">&#128736;</div>
+          <div class="kierunek-body">
+            <div class="kierunek-type">Branżowa Szkoła I Stopnia</div>
+            <h3>Mechanik — operator pojazdów i maszyn rolniczych</h3>
+            <p>Obsługa i konserwacja ciągników, kombajnów i innych maszyn rolniczych stosowanych w nowoczesnym rolnictwie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WYDARZENIA / ZAJECIA -->
+  <section id="wydarzenia">
+    <div class="container">
+      <div class="section-header">
+        <h2>Życie szkoły i wydarzenia</h2>
+        <div class="divider"></div>
+        <p>Przykładowe zajęcia, wydarzenia i aktywności uczniów ZSCKR w Różańcu.</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">Styczeń – Luty 2026</div>
+          <h3>Lekcje narciarstwa na stoku</h3>
+          <p>Innowacja pedagogiczna „Lekcje narciarstwa na stoku — aktywność ruchowa na świeżym powietrzu" w ramach wychowania fizycznego.</p>
+          <span class="event-tag">Innowacja pedagogiczna</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Styczeń 2026</div>
+          <h3>Spotkanie profilaktyczne z Policją</h3>
+          <p>Spotkanie uczniów z funkcjonariuszami Policji poświęcone bezpieczeństwu młodzieży, cyberzagrożeniom i profilaktyce.</p>
+          <span class="event-tag">Bezpieczeństwo</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Cały rok szkolny</div>
+          <h3>Praktyki w gospodarstwie szkolnym</h3>
+          <p>Uczniowie kierunków rolniczych odbywają praktyki na 27-hektarowym gospodarstwie szkolnym z nowoczesnym parkiem maszynowym.</p>
+          <span class="event-tag">Praktyki</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Cały rok szkolny</div>
+          <h3>Kursy prawa jazdy kat. B i T</h3>
+          <p>Bezpłatne kursy prawa jazdy kategorii B i T oraz obsługi kombajnu zbożowego na szkolnych placach manewrowych.</p>
+          <span class="event-tag">Kursy</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Wakacje</div>
+          <h3>Zagraniczne praktyki ERASMUS+</h3>
+          <p>Dzięki akredytacji Erasmusa uczniowie realizują zagraniczne praktyki zawodowe w krajach Unii Europejskiej.</p>
+          <span class="event-tag">Erasmus+</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Cały rok</div>
+          <h3>Kursy kwalifikacyjne z certyfikatem</h3>
+          <p>Dodatkowe kursy: barista, kelner, operator wózków wysięgnikowych, chemizacja rolnictwa — z certyfikatem europejskim.</p>
+          <span class="event-tag">Certyfikaty</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-header">
+        <h2>Galeria</h2>
+        <div class="divider"></div>
+        <p>Przykładowe zdjęcia przedstawiające życie szkoły rolniczej i okolicę Różańca.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item tall">
+          <img
+            src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=500&h=700&fit=crop"
+            alt="Pole uprawne — rolnictwo"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Pola uprawne w okolicach szkoły</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=500&h=340&fit=crop"
+            alt="Ciągnik rolniczy"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Nauka obsługi maszyn rolniczych</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=340&fit=crop"
+            alt="Kuchnia gastronomiczna"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Zajęcia gastronomiczne</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=500&h=340&fit=crop"
+            alt="Panele fotowoltaiczne"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Energetyka odnawialna — fotowoltaika</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=500&h=340&fit=crop"
+            alt="Krajobraz wiejski"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Krajobraz Płaskowyżu Tarnogrodzkiego</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Kontakt — ZSCKR Różaniec</h3>
+          <p>
+            Różaniec Pierwszy I 94<br>
+            23-420 Tarnogród<br><br>
+            Tel: 84 689 93 82<br>
+            Tel/Fax: 84 689 93 46<br><br>
+            <a href="https://zsckrrozaniec.pl" target="_blank" rel="noopener">zsckrrozaniec.pl</a>
+          </p>
+        </div>
+        <div>
+          <h3>Parafia Różaniec</h3>
+          <p>
+            Parafia pw. św. Antoniego Padewskiego<br>
+            Diecezja zamojsko-lubaczowska<br>
+            Dekanat Tarnogród<br>
+            Erygowana: 1975 r.
+          </p>
+        </div>
+        <div>
+          <h3>Przydatne linki</h3>
+          <p>
+            <a href="https://www.tarnogrod.pl" target="_blank" rel="noopener">Urząd Miejski w Tarnogrodzie</a><br>
+            <a href="https://bilgorajski.pl" target="_blank" rel="noopener">Powiat Biłgorajski</a><br>
+            <a href="https://zsckrrozaniec.pl" target="_blank" rel="noopener">Strona szkoły — ZSCKR</a><br>
+            <a href="https://pl.wikipedia.org/wiki/R%C3%B3%C5%BCaniec_(wojew%C3%B3dztwo_lubelskie)" target="_blank" rel="noopener">Wikipedia — Różaniec</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 TestWebApp — Strona informacyjna o Różańcu Pierwszym. Zdjęcia poglądowe z Unsplash.
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
